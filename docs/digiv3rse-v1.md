@@ -1,6 +1,6 @@
 # What is DiGiV3rse V1?
 
-![Overview Cover](https://github.com/digiv3rse/assets/raw/main/docs/overview-cover.png "Overview Cover Picture")
+![Overview Cover](assets/overview-cover.png "Overview Cover Picture")
 
 # Introduction
 
