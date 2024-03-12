@@ -173,7 +173,7 @@ const AppSection = () => {
                 Launch App
               </a>
               <a
-                href={INFO_CENTER_URL}
+                href={DOCUMENTATION_URL}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-300 cursor-pointer text-xs md:text-md flex items-center justify-around mt-4 sm:mt-0 sm:ml-4 font-bold rounded-md h-8 w-full sm:w-52 border border-gray300"
