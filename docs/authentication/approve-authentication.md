@@ -57,6 +57,6 @@ query ApprovedAuthentication($request: ApprovedAuthenticationRequest!) {
 }
 ```
 
-## LensClient
+## DiGiClient
 
 TODO: Needs to be implemented

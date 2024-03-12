@@ -1,0 +1,3 @@
+# Module Verification
+
+The protocol is open; anyone can register a module and use it onchain; of course, this unlocks amazing things, but it also allows a much easier attack vector if all of these can be used in the API/SDK. To battle this most transparently without hurting innovation, we have opened up a public GitHub repo to allow anyone to submit their modules to be verified; Once verified, we class it as safe to be used. As its public it means we accountable to reviewing it, if the module is then merged into this repo its automatically allowed to be used on the API/SDK and even supports gasless for it to empower the module to be integrated on any app.

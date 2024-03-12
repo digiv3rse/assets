@@ -6,7 +6,7 @@ If you intend to implement may wish to use the same authentication on your serve
 ## Invocation
 
 ```typescript
-const isVerified = await lensClient.authentication.verify(accessToken);
+const isVerified = await digiClient.authentication.verify(accessToken);
 
 ```
 
@@ -23,7 +23,7 @@ JSON
 
 ```
 
-## Full LensClient Example
+## Full DiGiClient Example
 
 ## 📘
 ##### [Verify JWT: GraphQL API Full Example](https://github.com/digiv3rse/api-examples)

@@ -5,9 +5,9 @@ Authentication plays an important role in ensuring secure interactions with cert
 
 We use JSON Web Tokens (JWT) as our authentication layer. This token can also be used in your own server-side application using the the [Verify JWT](./verify-jwt.md) functionality.
 
-To validate their ownership of the EVM address linked to the Lens profile, we require a signed message from the associated Ethereum wallet as part of the authentication process. This is covered in detail in the following sections.
+To validate their ownership of the EVM address linked to the DiGi profile, we require a signed message from the associated Ethereum wallet as part of the authentication process. This is covered in detail in the following sections.
 
-## Full authentication example using LensClient SDK
+## Full authentication example using DiGiClient SDK
 
 Using the SDK to authenticate requires a wallet / signer from your Ethereum library of choice and follow the steps:
 
@@ -20,22 +20,22 @@ Using the SDK to authenticate requires a wallet / signer from your Ethereum libr
 ### Example with ethers
 
 ```typescript
-export async function getAuthenticatedClientFromEthersWallet(wallet: Wallet): Promise<LensClient> {
-  const lensClient = new LensClient({
+export async function getAuthenticatedClientFromEthersWallet(wallet: Wallet): Promise<DiGiClient> {
+  const digiClient = new DiGiClient({
     environment: development,
   });
 
   const address = await wallet.getAddress();
 
-  const { id, text } = await lensClient.authentication.generateChallenge({
+  const { id, text } = await digiClient.authentication.generateChallenge({
     signedBy: address,
     for: YOUR_PROFILE_ID,
   });
   const signature = await wallet.signMessage(text);
 
-  await lensClient.authentication.authenticate({ id, signature });
+  await digiClient.authentication.authenticate({ id, signature });
 
-  return lensClient;
+  return digiClient;
 }
 
 ```
@@ -43,25 +43,25 @@ export async function getAuthenticatedClientFromEthersWallet(wallet: Wallet): Pr
 ### Example with viem
 
 ```typescript
-import { LensClient, development } from "@lens-protocol/client";
+import { DiGiClient, development } from "@digi-protocol/client";
 import { WalletClient } from "viem";
 
 export async function getAuthenticatedClient(walletClient: WalletClient) {
-  const lensClient = new LensClient({
+  const digiClient = new DiGiClient({
     environment: development,
   });
 
   const address = walletClient.account.address;
 
-  const { id, text } = await lensClient.authentication.generateChallenge({
+  const { id, text } = await digiClient.authentication.generateChallenge({
     signedBy: address,
     for: YOUR_PROFILE_ID,
   });
   const signature = await walletClient.signMessage({ account: address, message: text });
 
-  lensClient.authentication.authenticate({ id, signature });
+  digiClient.authentication.authenticate({ id, signature });
 
-  return lensClient;
+  return digiClient;
 }
 
 ```

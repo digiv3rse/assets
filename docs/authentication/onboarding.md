@@ -1,6 +1,6 @@
 # Onboarding
 
-Learn how to onboard new users to Lens.
+Learn how to onboard new users to DiGi.
 ---
 
 The process of onboarding a new user involves minting a new Profile NFT. This can be accomplished either by the user themselves in a self-funded manner, or by a third party on behalf of the user.
@@ -21,7 +21,7 @@ Here are the rules to follow when choosing an Handle:
 
 ### Crypto Onboarding
 
-In crypto self-funded onboarding, the user is guided through the process of creating a Lens Profile with their desired Handle for a fee of 8 MATIC. As this process uses the user's wallet to send the transaction, it cannot be gasless and requires the user's signature.
+In crypto self-funded onboarding, the user is guided through the process of creating a DiGi Profile with their desired Handle for a fee of 8 MATIC. As this process uses the user's wallet to send the transaction, it cannot be gasless and requires the user's signature.
 
 # React SDK
 
@@ -156,7 +156,7 @@ That's it–you can now log in the user with the useLogin hook and their newly c
 
 ### Manual Contract Call
 
-You can onboard a new user to Lens by allowing them to mint a profile with a handle using the new PermissionlessCreator smart contract directly. This section will guide you through the process of minting a Lens profile with a handle using the JavaScript SDK (i.e. LensClient) or the Lens GraphQL API.
+You can onboard a new user to DiGi by allowing them to mint a profile with a handle using the new PermissionlessCreator smart contract directly. This section will guide you through the process of minting a DiGi profile with a handle using the JavaScript SDK (i.e. DiGiClient) or the DiGi GraphQL API.
 
 The process is as follows:
 
@@ -170,7 +170,7 @@ The process is as follows:
 
 ### 1. Validate the Requested Handle
 
-The handle must adhere to specific rules to be considered valid. The Lens SDKs provide a straightforward isValidHandle function to verify the validity of a handle.
+The handle must adhere to specific rules to be considered valid. The DiGi SDKs provide a straightforward isValidHandle function to verify the validity of a handle.
 
 ```TypeScript
 
@@ -182,13 +182,13 @@ if (!isValidHandle(requestedHandle)) {
   console.error(`Invalid handle`);
 }
 ```
-The next step is to verify if the requested handle is available. Here's how you can do it using the LensClient.
+The next step is to verify if the requested handle is available. Here's how you can do it using the DiGiClient.
 
 ```TypeScript
 
-import { LensClient, production } from "@digiv3rse/client";
+import { DiGiClient, production } from "@digiv3rse/client";
 
-const client = new LensClient({
+const client = new DiGiClient({
   environment: production,
 });
 
@@ -202,7 +202,7 @@ if (handleOwnerAddress) {
   console.error(`The requested handle is not available.`);
 }
 ```
-You can also directly query the Lens GraphQL API.
+You can also directly query the DiGi GraphQL API.
 
 **Query**
 
@@ -303,11 +303,11 @@ The createProfileWithHandle method is what we'll use to mint a new profile with 
 
  * followModule and followModuleInitData: These are for advanced use and we'll leave them out for now.
 
-To enable the Signless Experience you will need to provide the Lens Relayer address as one of the Profile Managers. You can retrieve this address from the Lens API using the JavaScript SDK (i.e. LensClient) or the Lens GraphQL API.
+To enable the Signless Experience you will need to provide the DiGi Relayer address as one of the Profile Managers. You can retrieve this address from the DiGi API using the JavaScript SDK (i.e. DiGiClient) or the DiGi GraphQL API.
 
 ```javascripy title="JavaScript SDK"
 
-const relayerAddress = await client.transaction.generateLensAPIRelayAddress();
+const relayerAddress = await client.transaction.generateDiGiAPIRelayAddress();
 ```
 You can retrieve the price of minting a new profile with a handle using the getProfileWithHandleCreationPrice method.
 
@@ -433,24 +433,24 @@ That's it—you've successfully minted a new profile with a handle using the Per
 
 ### 4. Optional Next Steps
 
-After the transaction is indexed by Lens API we recommend the following next steps:
+After the transaction is indexed by DiGi API we recommend the following next steps:
 
 Fetch the newly minted profile.
 Authenticate the profile with the API.
 Update the Profile Metadata.
 The steps you choose to implement depend on your application's needs.
 
-The complete onboarding script using the JavaScript SDK can be found in the examples folder of the [Lens SDK GitHub repository](https://github.com/digiv3rse/sdk).
+The complete onboarding script using the JavaScript SDK can be found in the examples folder of the [DiGi SDK GitHub repository](https://github.com/digiv3rse/sdk).
 
 ## Credited Onboarding
 
 For applications with unique onboarding requirements, a credit system for onboarding is available to cater to these needs.
 
-Recognized app builders are granted an initial number of credits by the Lens Protocol team. These credits can be used to mint new Profile in behalf of the app new users. Each credit used reduces the total number of credits available to the app.
+Recognized app builders are granted an initial number of credits by the DiGi Protocol team. These credits can be used to mint new Profile in behalf of the app new users. Each credit used reduces the total number of credits available to the app.
 
 📘
-If you choose to charge users for onboarding with this integration, you must align with the Lens Protocol fees, which are 8 MATIC for crypto payments or 10 USD for fiat payments.
-If you're interested in obtaining credits for your app, please reach out to the Lens Protocol team via this form.
+If you choose to charge users for onboarding with this integration, you must align with the DiGi Protocol fees, which are 8 MATIC for crypto payments or 10 USD for fiat payments.
+If you're interested in obtaining credits for your app, please reach out to the DiGi Protocol team via this form.
 
 Below are the PermissionlessCreator contract features that can be utilized to mint new Profiles using credits.
 
@@ -477,7 +477,7 @@ struct CreateProfileParams {
 }
 ````
 
-The app builder can use the delegatedExecutors parameter to set up Profile Manager addresses on the newly created Profile. If the Lens Relayer address is included in the delegatedExecutors array, this effectively enables the Signless Experience for the new Profile.
+The app builder can use the delegatedExecutors parameter to set up Profile Manager addresses on the newly created Profile. If the DiGi Relayer address is included in the delegatedExecutors array, this effectively enables the Signless Experience for the new Profile.
 
 ## Lazy Onboarding
 
@@ -511,11 +511,11 @@ function createHandleWithCredits(
 ) external returns (uint256);
 ````
 
-Use the standard ERC-721 transferFrom method on the Handle NFT contract (refer to LensHandles in smart contracts) to transfer the Handle to the user.
+Use the standard ERC-721 transferFrom method on the Handle NFT contract (refer to DiGiHandles in smart contracts) to transfer the Handle to the user.
 
 ## Transfer Profile
 
-Once the Profile is minted, the app builder can transfer it to the user using the standard ERC-721 transferFrom method on the Profile NFT contract (refer to LensHub in smart contracts).
+Once the Profile is minted, the app builder can transfer it to the user using the standard ERC-721 transferFrom method on the Profile NFT contract (refer to DiGiHub in smart contracts).
 
 If the Profile was created with delegatedExecutors (i.e., Profile Manager addresses), the transferFromKeepingDelegates function should be used to maintain this configuration after transferring the Profile to the user. This function is available on the PermissionlessCreator smart contract.
 
@@ -532,7 +532,7 @@ function transferFromKeepingDelegates(
 
 ## Creative Approaches
 
-It's worth noting that the credit address you provide to the Lens Protocol team can be a smart contract. This allows you to incorporate flexible rules into your onboarding process. For instance, you could set conditions such as requiring users to hold a specific NFT, or you could charge your own fee for onboarding. All these conditions can be composed on-chain.
+It's worth noting that the credit address you provide to the DiGi Protocol team can be a smart contract. This allows you to incorporate flexible rules into your onboarding process. For instance, you could set conditions such as requiring users to hold a specific NFT, or you could charge your own fee for onboarding. All these conditions can be composed on-chain.
 
 > 📘 Note: We recommend making your contracts upgradable proxies to easily adapt their criteria as needs evolve.
 
@@ -569,7 +569,7 @@ interface IPermissonlessCreator {
     ) external returns (uint256);
 }
 
-contract AppChargeLensOnboarding is Ownable {
+contract AppChargeDiGiOnboarding is Ownable {
     // load the permissonless creator contract
     IPermissonlessCreator public immutable PERMISSONLESS_CREATOR;
 
@@ -639,7 +639,7 @@ interface IPermissonlessCreator {
 }
 
 // onboard digi users for free
-contract AppFreeLensOnboarding is Ownable {
+contract AppFreeDiGiOnboarding is Ownable {
     // load the permissionless creator contract
     IPermissonlessCreator public immutable PERMISSONLESS_CREATOR;
 
@@ -650,7 +650,7 @@ contract AppFreeLensOnboarding is Ownable {
 
     // modifier to only allow your allowed address to do it
     modifier onlyAllowed() {
-        require(allowedAddresses[msg.sender], 'AppFreeLensOnboarding: Not allowed');
+        require(allowedAddresses[msg.sender], 'AppFreeDiGiOnboarding: Not allowed');
         _;
     }
 
@@ -690,7 +690,7 @@ contract AppFreeLensOnboarding is Ownable {
 Alternatively, you could use an Externally Owned Account (EOA) and manage the gating on the backend. This flexibility makes it a highly adaptable onboarding system.
 
 Card Onboarding
-In the card onboarding, the user is guided through the process of creating a Lens Profile with their desired Handle for a fee of 10 USD.
+In the card onboarding, the user is guided through the process of creating a DiGi Profile with their desired Handle for a fee of 10 USD.
 
 This feature is enabled through an integration with Stripe, a popular payment gateway. The Custom payment flow from Stripe is used, offering flexibility to customize the payment experience to suit your needs.
 
@@ -708,33 +708,33 @@ The process unfolds as follows:
 
 2. The user enters their card details and follows the payment instructions provided by their card provider.
 
-3. Once the payment is successful, Stripe communicates with the Lens API, triggering the on-chain Profile creation process. Stripe also redirects the UI to the specified return_url.
+3. Once the payment is successful, Stripe communicates with the DiGi API, triggering the on-chain Profile creation process. Stripe also redirects the UI to the specified return_url.
 
 4. The UI verifies the payment outcome using the Client Secret from step 1.
 
 5. After verifying the successful payment, the UI begins checking for Blockchain Transaction Info associated with the Payment Intent ID from step 1.
 
-6. Once the UI receives confirmation from the Lens API, it waits for the completion of the Create Profile Transaction. This process uses the Transaction ID obtained earlier, as explained in the Lens Transaction Status guide.
+6. Once the UI receives confirmation from the DiGi API, it waits for the completion of the Create Profile Transaction. This process uses the Transaction ID obtained earlier, as explained in the DiGi Transaction Status guide.
 
 Finally, the UI can fetch the newly created Profile and continue with the onboarding process.
 
 ### Shared Secret
 
-The Lens API provides two bespoke endpoints for this integration:
+The DiGi API provides two bespoke endpoints for this integration:
 
 * POST /payments/create
 
 * GET /payments/<paymentIntentId>/blockchain-tx-info
 
-These endpoints are available at the specified paths on the Lens API URL for each environment.
+These endpoints are available at the specified paths on the DiGi API URL for each environment.
 
-To use these endpoints, contact the Lens Protocol team to obtain a shared secret for your application. This shared secret should be included in the x-shared-secret HTTP headers when making requests to these endpoints.
+To use these endpoints, contact the DiGi Protocol team to obtain a shared secret for your application. This shared secret should be included in the x-shared-secret HTTP headers when making requests to these endpoints.
 
 > 📘 This shared secret is a sensitive piece of information intended for server-to-server communication. It should never be exposed on the client-side.
 
 ### Create Payment Intent
 
-Use the POST /payments/create endpoint to create a Payment Intent. This endpoint requires the user's wallet address and the desired Handle local-name. The Lens API will respond with the Payment Intent's client secret, which you can use to initiate the Stripe Checkout form.
+Use the POST /payments/create endpoint to create a Payment Intent. This endpoint requires the user's wallet address and the desired Handle local-name. The DiGi API will respond with the Payment Intent's client secret, which you can use to initiate the Stripe Checkout form.
 
 #### Request
 
@@ -891,7 +891,7 @@ The payment was successful and the Create Profile transaction has been sent.
 
 `SUCESSS_PAYMENT_BLOCKCHAIN_FAILED`
 
-The payment was successful, but the Create Profile transaction failed. This is a rare case that requires manual intervention. Contact the Lens Protocol team if this occurs.
+The payment was successful, but the Create Profile transaction failed. This is a rare case that requires manual intervention. Contact the DiGi Protocol team if this occurs.
 
 `txId`
 
@@ -989,11 +989,11 @@ JavaScript SDK
 
 [](#javascript-sdk)
 
-The [client.wallet.createProfileWithHandle](https://digiv3rse.github.io/sdk/classes/_digiv3rse _client.Core.Wallet.html#createProfileWithHandle) method enables you to create a Lens Profile with a given Handle.
+The [client.wallet.createProfileWithHandle](https://digiv3rse.github.io/sdk/classes/_digiv3rse _client.Core.Wallet.html#createProfileWithHandle) method enables you to create a DiGi Profile with a given Handle.
 
 TypeScript
 
-``import { LensClient, development, isRelaySuccess } from "@digiv3rse/client";  const client = new LensClient({   environment: development, // wont't work with `production` });  const result = await client.wallet.createProfileWithHandle({   // e.g. 'alice' which will be '@digi/alice' in full-handle notation   handle: "<local name>",   to: "<your address>", });  // handle relay errors if (!isRelaySuccess(profileCreateResult)) {   console.error(`Something went wrong`, result);   process.exit(1); }  // wait for the transaction to be mined and indexed const outcome = await client.transaction.waitUntilComplete({   forTxId: result.txId, });  // handle transaction not found if (outcome === null) {   console.error("The transaction was not found");   process.exit(1); }  console.log("Profile created");``
+``import { DiGiClient, development, isRelaySuccess } from "@digiv3rse/client";  const client = new DiGiClient({   environment: development, // wont't work with `production` });  const result = await client.wallet.createProfileWithHandle({   // e.g. 'alice' which will be '@digi/alice' in full-handle notation   handle: "<local name>",   to: "<your address>", });  // handle relay errors if (!isRelaySuccess(profileCreateResult)) {   console.error(`Something went wrong`, result);   process.exit(1); }  // wait for the transaction to be mined and indexed const outcome = await client.transaction.waitUntilComplete({   forTxId: result.txId, });  // handle transaction not found if (outcome === null) {   console.error("The transaction was not found");   process.exit(1); }  console.log("Profile created");``
 
 ### 
 
@@ -1007,10 +1007,10 @@ GraphQL
 
 `mutation {   createProfileWithHandle(     request: {       # e.g. 'alice' which will be '@digi/alice' in full-handle notation       handle: "<local name>"       to: "<your address>"     }   ) {     ... on RelaySuccess {       txHash       txId     }      ... on CreateProfileWithHandleErrorResult {       reason     }   } }`
 
-RelaySuccessLensProfileManagerRelayError
+RelaySuccessDiGiProfileManagerRelayError
 
 `{   "data": {     "actOnOpenAction": {       "txId": "c30869d4-9a3a-4373-b5dc-811ea393bdf5",       "txHash": "0x1234567890abcdef1234567890abcdef1234567890abcdef1234567890abcdef"     }   } }`
 
-`{   "data": {     "actOnOpenAction": {       "reason": "FAILED" // LensProfileManagerRelayErrorReasonType     }   } }`
+`{   "data": {     "actOnOpenAction": {       "reason": "FAILED" // DiGiProfileManagerRelayErrorReasonType     }   } }`
 
 The `RelaySuccess#txId` can be used to wait for the transaction to be mined and indexed like explained [here](/docs/digi-transaction-status).

@@ -9,29 +9,29 @@
 # Major Concepts
 --------------
 
-*   [Profile](/major-concept/profile)
+*   [Profile](//docs/major-concept/profile)
  
-*   [Handle](/major-concept/handle)
+*   [Handle](/docs/major-concept/handle)
   
-*   [Publication](/major-concept/publication)
+*   [Publication](/docs/major-concept/publication)
   
-*   [Comment](/major-concept/comment)
+*   [Comment](/docs/major-concept/comment)
  
-*   [Quote](/major-concept/comment-copy)
+*   [Quote](/docs/major-concept/comment-copy)
  
-*   [Mirror](/major-concept/mirror)
+*   [Mirror](/docs/major-concept/mirror)
  
-*   [Open Actions](/major-concept/publication-actions-aka-open-actions)
+*   [Open Actions](/docs/major-concept/publication-actions-aka-open-actions)
  
-*   [Collect Action](/major-concept/collect)
+*   [Collect Action](/docs/major-concept/collect)
  
-*   [Follow](/major-concept/follow)
+*   [Follow](/docs/major-concept/follow)
   
-*   [Profile Manager](/major-concept/profile-manager)
+*   [Profile Manager](/docs/major-concept/profile-manager)
    
-*   [Referrals](/major-concept/referrals)
+*   [Referrals](docs/docs/major-concept/referrals)
   
-*   [Token Guardian](/major-concept/token-guardian)
+*   [Token Guardian](docs/docs/major-concept/token-guardian)
 
 
 # DiGi API
@@ -73,16 +73,23 @@ Advanced API docs
 Modules and Open Actions
 ------------------------
 
-*   [Introduction to Modules](/docs/module-interfaces)
-*   [Module Metadata Standard](/docs/module-metadata-standard)
-*   [Module Verification](/docs/module-verification)
-*   [Integrate Modules](/docs/integrate-modules)
-*   [Registering a Module](/docs/publishing-a-module)
-*   [Creating a Follow Module](/docs/creating-a-module)
-*   [Creating an Open Action (Publication Action)](/docs/creating-a-publication-action)
-*   [Open Action End to End Guide](/docs/open-action-end-to-end-guide)
+*   [Introduction to Modules](/docs/modules/module-interfaces)
+
+*   [Module Metadata Standard](/docs/modules/module-metadata-standard)
+
+*   [Module Verification](/docs/modules/module-verification)
+
+*   [Integrate Modules](/docs/modules/integrate-modules)
+
+*   [Registering a Module](/docs/modules/publishing-a-module)
+
+*   [Creating a Follow Module](/docs/modules/creating-a-module)
+
+*   [Creating an Open Action (Publication Action)](/docs/modules/creating-a-publication-action)
+
+*   [Open Action End to End Guide](/docs/modules/open-action-end-to-end-guide)
 
 Specification
 -------------
 
-*   [Lens contract book](/docs/lenshub)
+*   [DiGi contract book](/docs/digihub)
